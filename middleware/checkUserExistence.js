@@ -11,10 +11,10 @@ async function checkUserExists(req, res, next) {
     } else {
       res.status(404).send(`Пользователя с id ${req.params.id} не существует`)
     }
-    
+
   } catch (error) {
     res.status(500).send("Ошибка сервера")
   }
 }
 
-module.exports = checkUserExists
+module.exports = { checkUserExists }

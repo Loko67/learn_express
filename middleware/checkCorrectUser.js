@@ -11,4 +11,4 @@ async function checkCorrectUser(req, res, next) {
     next()
   }
 
-module.exports = checkCorrectUser
+module.exports = { checkCorrectUser }

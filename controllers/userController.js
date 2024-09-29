@@ -1,6 +1,6 @@
 const { UserModel } = require("../models/User.model")
 
-const prepareUser = require("../service/prepareUser")
+const { prepareUser } = require("../service/prepareUser")
 
 async function get(req, res) {
 
@@ -16,7 +16,6 @@ async function get(req, res) {
 async function getAll(req, res) {
 
   try {
-    //const rawUsers = await UserModel.find()
 
     const users = []
 

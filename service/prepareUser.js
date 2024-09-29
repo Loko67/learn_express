@@ -8,4 +8,4 @@ function prepareUser(rawUser) {
 
 }
 
-module.exports = prepareUser
+module.exports = { prepareUser }

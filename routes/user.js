@@ -1,8 +1,8 @@
 const express = require("express")
 const router= express.Router()
 
-const checkUserExists = require("../middleware/checkUserExistence")
-const checkCorrectUser = require("../middleware/checkCorrectUser")
+const { checkUserExists } = require("../middleware/checkUserExistence")
+const { checkCorrectUser } = require("../middleware/checkCorrectUser")
 
 const userController = require("../controllers/userController")
 
@@ -12,4 +12,4 @@ router.delete("/:id", checkUserExists, userController.del)
 router.get("/", userController.getAll)
 router.put("/:id", checkUserExists, userController.put)
 
-module.exports = router
+module.exports = { router }
