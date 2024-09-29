@@ -9,5 +9,7 @@ const userController = require("../controllers/userController")
 router.get("/:id", checkUserExists, userController.get)
 router.post("/", checkCorrectUser, userController.post)
 router.delete("/:id", checkUserExists, userController.del)
+router.get("/", userController.getAll)
+router.put("/:id", checkUserExists, userController.put)
 
 module.exports = router

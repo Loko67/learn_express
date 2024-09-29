@@ -7,10 +7,11 @@ async function checkUserExists(req, res, next) {
     if (user) {
       req.user = user
       next()
-      
+
     } else {
       res.status(404).send(`Пользователя с id ${req.params.id} не существует`)
     }
+    
   } catch (error) {
     res.status(500).send("Ошибка сервера")
   }

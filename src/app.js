@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const userRouter = require("./routes/user")
+const router = require("../routes/user")
 
 const mongoose = require("mongoose")
 
@@ -17,7 +17,9 @@ mongoose.connect(process.env.MONGO_HOST, options)
 
 app.use(express.json())
 
-app.use("/user", userRouter)
+app.use("/user", router)
+
+app.use("/", router)
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Hello!")
