@@ -2,6 +2,10 @@ const { UserModel } = require("../models/User.model")
 
 const { prepareUser } = require("../service/prepareUser")
 
+const { createUser } = require("../service/createUser")
+
+const { updateUser } = require("../service/updateUser")
+
 async function get(req, res) {
 
   try {
@@ -12,6 +16,7 @@ async function get(req, res) {
     res.status(500).send("Ошибка сервера")
   }
 }
+
 
 async function getAll(req, res) {
 
@@ -31,6 +36,7 @@ async function getAll(req, res) {
   }
 }
 
+
 async function del(req, res) {
 
   try {
@@ -44,17 +50,12 @@ async function del(req, res) {
   }
 }
 
+
 async function post(req, res) {
 
   try {
-    const newUser = req.body
-    await UserModel.create(
-      {
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        id: newUser.id
-      }
-    )
+
+    await createUser(req)
 
     res.status(200).send("Пользователь добавлен")
 
@@ -64,21 +65,13 @@ async function post(req, res) {
   }
 }
 
+
 async function put(req, res) {
 
   try {
 
-    await UserModel.updateOne(
-      { id: req.params.id },
-      {
-        $set:
-        {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName
-        }
-      })
-
-    res.status(500).send("Данные обновлены")
+    await updateUser(req)
+    res.status(200).send("Данные обновлены")
 
   } catch (error) {
 
