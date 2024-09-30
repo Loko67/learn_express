@@ -1,13 +1,13 @@
 const express = require("express")
-const router= express.Router()
+const router = express.Router()
 
 const { checkUserExists } = require("../middleware/checkUserExistence")
-const { checkCorrectUser } = require("../middleware/checkCorrectUser")
+const { checkIdUser, validateUser } = require("../middleware/checkCorrectUser")
 
 const userController = require("../controllers/userController")
 
 router.get("/:id", checkUserExists, userController.get)
-router.post("/", checkCorrectUser, userController.post)
+router.post("/", validateUser, checkIdUser, userController.post)
 router.delete("/:id", checkUserExists, userController.del)
 router.get("/", userController.getAll)
 router.put("/:id", checkUserExists, userController.put)
